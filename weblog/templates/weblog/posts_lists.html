@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+
+{% block page_title %}
+    list of posts
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-9">
+                {% for post in all_posts %}
+
+                    <div class="card shadow-sm my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted small py-2">{{ post.datetime_create }}</h6>
+                            <p class="card-text py-3">
+                                {{ post.text }}
+                            </p>
+                            <h6 class="card-subtitle mb-2 text-muted small py-2">by: {{ post.author }}</h6>
+
+                            <a href="{% url "post_detail" post.id %}" class="btn btn-sm btn-success">Read More</a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">It is reasonable to assume every web designer has used lorem</p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
